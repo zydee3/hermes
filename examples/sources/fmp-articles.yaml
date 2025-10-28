@@ -1,0 +1,38 @@
+# News articles from Financial Modeling Prep
+# Fetches latest 20 articles every hour
+
+name: fmp-articles
+description: FMP news articles feed
+
+url: "https://financialmodelingprep.com/stable/fmp-articles"
+
+table: news
+
+schedule: hourly
+
+execution:
+  timeout: 300
+  maxRetries: 5
+  retryResetPeriod: 1d
+
+params:
+  - name: page
+    value: "0"
+  - name: limit
+    value: "20"
+
+response:
+  dataPath: "."
+  fields:
+    - source: title
+      target: headline
+    - source: date
+      target: timestamp
+    - source: link
+      target: url
+    - source: site
+      target: source
+    - source: tickers
+      target: tickers
+    - source: content
+      target: content

@@ -1,0 +1,7 @@
+# Financial Modeling Prep API Configuration
+# Domain extracted from URLs like: https://financialmodelingprep.com/api/v3/...
+
+domain: financialmodelingprep.com
+limit: 300
+period: 1m
+api_key: your_fmp_api_key_here

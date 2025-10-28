@@ -1,0 +1,32 @@
+# Historical daily stock prices for AAPL from Financial Modeling Prep
+# Fetches 5 years of historical price data once per day
+
+name: fmp-aapl-historical
+description: AAPL historical daily prices from FMP
+
+url: "https://financialmodelingprep.com/api/v3/historical-price-full/AAPL"
+
+table: prices
+
+schedule: daily
+
+execution:
+  timeout: 60
+  maxRetries: 5
+  retryResetPeriod: 1d
+
+response:
+  dataPath: "historical"
+  fields:
+    - source: date
+      target: timestamp
+    - source: open
+      target: open_price
+    - source: high
+      target: high_price
+    - source: low
+      target: low_price
+    - source: close
+      target: close_price
+    - source: volume
+      target: volume

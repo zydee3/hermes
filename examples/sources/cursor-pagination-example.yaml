@@ -1,0 +1,35 @@
+# Example showing cursor-based pagination (tokens)
+# Demonstrates using cursor tokens to fetch multiple pages
+
+name: example-cursor-pagination
+description: Example of cursor-based pagination with tokens
+
+url: "https://api.example.com/v2/data-stream"
+
+table: stream_data
+
+schedule: hourly
+
+execution:
+  timeout: 300
+  maxRetries: 5
+  retryResetPeriod: 1d
+
+params:
+  - name: symbol
+    value: "AAPL"
+
+response:
+  dataPath: "results"
+  fields:
+    - source: id
+      target: item_id
+    - source: timestamp
+      target: timestamp
+    - source: data
+      target: content
+
+cursorPagination:
+  cursorParam: cursor  # Query param name for cursor token
+  nextCursorPath: "pagination.next_cursor"  # JSON path to next cursor value
+ 
